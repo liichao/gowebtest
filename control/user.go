@@ -1,6 +1,8 @@
 package control
 
 import (
+	"time"
+
 	"../model"
 	"github.com/dgrijalva/jwt-go"
 	"github.com/labstack/echo"
@@ -36,12 +38,13 @@ func UserLogin(ctx echo.Context) error {
 		User:     mod.User,
 		PassWord: mod.PassWord,
 		StandardClaims: jwt.StandardClaims{
-			ExpiresAt: 15000,
+			// ExpiresAt: 15000,// 过期时间
+			ExpiresAt: time.Now().Add(2 * time.Hour).Unix(), // 取登陆时间+2小时后过期
 		},
 	}
 	usertoken := jwt.NewWithClaims(jwt.SigningMethodHS256, UserClaims)
 	ss, err := usertoken.SignedString([]byte("2599"))
 	// fmt.Printf("%v,%v,%v", mod.ID, ss, err)
-	return ctx.JSON(utils.Succ("登陆成功", mod, ss))
+	return ctx.JSON(utils.Succ("登陆成功", ss))
 	//return ctx.JSONP(http.StatusOK, "", &postInfo)
 }
