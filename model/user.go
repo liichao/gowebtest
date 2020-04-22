@@ -2,6 +2,8 @@ package model
 
 import (
 	"time"
+
+	"github.com/dgrijalva/jwt-go"
 )
 
 //User 表
@@ -21,4 +23,12 @@ func UserLogin(user string) (User, error) {
 	mod := User{}
 	err := Db.Get(&mod, "select * from user WHERE user=? LIMIT 1;", user)
 	return mod, err
+}
+
+// UserToken Jwt info
+type UserToken struct {
+	ID       int
+	PassWord string
+	User     string
+	jwt.StandardClaims
 }
