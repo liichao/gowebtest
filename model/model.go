@@ -7,6 +7,7 @@ import (
 	"github.com/jmoiron/sqlx"
 )
 
+// Db 定义一个Db操作
 var Db *sqlx.DB
 
 func init() {
