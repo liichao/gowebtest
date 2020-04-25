@@ -49,7 +49,7 @@ func ServerHeader(next echo.HandlerFunc) echo.HandlerFunc {
 		if err == nil && token.Valid {
 			return next(c)
 		} else {
-			return c.JSON(utils.ErrJwt("Token过期"))
+			return c.JSON(utils.ErrJwt("Token验证失败"))
 		}
 	}
 }

@@ -8,4 +8,5 @@ import (
 // AdmRouter 后台登陆页面
 func AdmRouter(api *echo.Group) {
 	api.GET("/", control.AdminIndexView)
+	api.POST("/class/add", control.ClassAdd)
 }

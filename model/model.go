@@ -15,5 +15,9 @@ func init() {
 	if err != nil {
 		log.Fatalln(err.Error())
 	}
+	// 检查数据库连接是否正常
+	if err = db.Ping(); err != nil {
+		log.Fatalln(err.Error())
+	}
 	Db = db
 }

@@ -1,6 +1,9 @@
 package model
 
-import "log"
+import (
+	"errors"
+	"log"
+)
 
 // Class 类别
 type Class struct {
@@ -35,10 +38,28 @@ func ClassAll() ([]Class, error) {
 // ClassGet 查询某一条
 func ClassGet(id int64) (*Class, error) {
 	modes := &Class{}
-	err := Db.Select(&modes, "select * from class where id =? limit 1", id)
+	err := Db.Get(modes, "select * from class where id =? limit 1", id)
 	return modes, err
 }
 
 // 添加
+
+// ClassAdd 添加分类
+func ClassAdd(mod *Class) error {
+	tx, _ := Db.Begin()
+	result, err := tx.Exec("insert into class(`Name`,`Desc`) values(?,?)", mod.Name, mod.Desc)
+	if err != nil {
+		tx.Rollback()
+		return err
+	}
+	rows, _ := result.RowsAffected()
+	if rows < 1 {
+		tx.Rollback()
+		return errors.New("rows 小于1")
+	}
+	tx.Commit()
+	return nil
+}
+
 // 修改
 // 删除
