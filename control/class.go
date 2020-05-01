@@ -5,19 +5,12 @@ import (
 	"log"
 	"strconv"
 
-	"github.com/liichao/gowebtest/model"
-
+	"../model"
 	"github.com/labstack/echo"
 	"github.com/zxysilent/utils"
 )
 
 // ClassGet 查询一条分类
-// @Summary 查询一条分类
-// @Description 查询一条分类
-// @Produce  json
-// @Success 200
-// @Failure 500
-// @Router /api/class/get/{id} [get]
 func ClassGet(ctx echo.Context) error {
 	id, err := strconv.ParseInt(ctx.Param("id"), 10, 64)
 	//id, err := strconv.ParseInt("2", 10, 64) // 获取id,按照10进制 转换成int64

@@ -1,7 +1,7 @@
 package router
 
 import (
-	"github.com/liichao/gowebtest/control"
+	"../control"
 
 	"github.com/labstack/echo"
 )
@@ -13,5 +13,4 @@ func APIRouter(api *echo.Group) {
 	api.GET("/class/page", control.ClassPage)
 	api.GET("/class/get/:id", control.ClassGet)
 	api.GET("/article/all", control.ArticleAll)
-	api.GET("/article/get/:id", control.ArticleGet)
 }

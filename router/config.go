@@ -5,8 +5,7 @@ import (
 	"io"
 	"log"
 
-	"github.com/liichao/gowebtest/model"
-
+	"../model"
 	"github.com/dgrijalva/jwt-go"
 	"github.com/labstack/echo"
 	"github.com/zxysilent/utils"
