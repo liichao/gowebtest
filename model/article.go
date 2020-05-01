@@ -23,3 +23,11 @@ func ArticleAll() ([]Article, error) {
 	log.Println(modes)
 	return modes, err
 }
+
+// ArticleGet 查询某一条
+func ArticleGet(id int64) (*Article, error) {
+	modes := &Article{}
+	err := Db.Get(modes, "select * from article where ARTICLE_ID =? limit 1", id)
+	log.Println(err)
+	return modes, err
+}

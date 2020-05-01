@@ -1,7 +1,8 @@
 package router
 
 import (
-	"../control"
+	"github.com/liichao/gowebtest/control"
+
 	"github.com/labstack/echo"
 )
 

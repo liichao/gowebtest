@@ -3,7 +3,8 @@ package control
 import (
 	"time"
 
-	"../model"
+	"github.com/liichao/gowebtest/model"
+
 	"github.com/dgrijalva/jwt-go"
 	"github.com/labstack/echo"
 	"github.com/zxysilent/utils"
@@ -15,6 +16,13 @@ type login struct {
 }
 
 // UserLogin 登陆判断
+// @Summary 用户登陆
+// @Description 判断用户是否登陆成功
+// @Produce  json
+// @Accept  json
+// @Success 200
+// @Failure 500
+// @Router /login [post]
 func UserLogin(ctx echo.Context) error {
 	postInfo := login{}
 	err := ctx.Bind(&postInfo)
