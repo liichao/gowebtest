@@ -1,0 +1,109 @@
+basePath: /
+host: 127.0.0.1:801
+info:
+  contact: {}
+  description: 在线api接口文档
+  license: {}
+  title: 在线api接口文档
+  version: "1.0"
+paths:
+  /api/article/{cid}/{pi}/{ps}:
+    get:
+      description: 根据文章分类获取数据
+      parameters:
+      - description: 分类ID
+        in: path
+        name: cid
+        required: true
+        type: integer
+      - description: 当前页数
+        in: path
+        name: pi
+        required: true
+        type: integer
+      - description: 一页显示多少数据
+        in: path
+        name: ps
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ok
+          schema:
+            type: string
+        "500": {}
+      summary: 根据文章分类获取数据
+  /api/article/get/{id}:
+    get:
+      description: 调用获取文章信息
+      parameters:
+      - description: 文章ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ok
+          schema:
+            type: string
+        "500": {}
+      summary: 查询文章信息
+  /api/class/all:
+    get:
+      description: 获取所有分类
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ok
+          schema:
+            type: string
+        "500": {}
+      summary: 获取所有分类
+  /api/class/get/{id}:
+    get:
+      description: 查询一个分类的详细信息
+      parameters:
+      - description: 分类ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ok
+          schema:
+            type: string
+        "500": {}
+      summary: 查询单个分类
+  /api/class/page/{pi}/{ps}:
+    get:
+      description: 分类按分页获取
+      parameters:
+      - description: 当前页数
+        in: path
+        name: pi
+        required: true
+        type: integer
+      - description: 一页显示多少数据
+        in: path
+        name: ps
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ok
+          schema:
+            type: string
+        "500": {}
+      summary: 分类按分页获取
+swagger: "2.0"

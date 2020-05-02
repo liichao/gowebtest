@@ -1,0 +1,161 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "在线api接口文档",
+        "title": "在线api接口文档",
+        "contact": {},
+        "license": {},
+        "version": "1.0"
+    },
+    "host": "127.0.0.1:801",
+    "basePath": "/",
+    "paths": {
+        "/api/article/get/{id}": {
+            "get": {
+                "description": "调用获取文章信息",
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "查询文章信息",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "文章ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {}
+                }
+            }
+        },
+        "/api/article/{cid}/{pi}/{ps}": {
+            "get": {
+                "description": "根据文章分类获取数据",
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "根据文章分类获取数据",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "分类ID",
+                        "name": "cid",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "当前页数",
+                        "name": "pi",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "一页显示多少数据",
+                        "name": "ps",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {}
+                }
+            }
+        },
+        "/api/class/all": {
+            "get": {
+                "description": "获取所有分类",
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "获取所有分类",
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {}
+                }
+            }
+        },
+        "/api/class/get/{id}": {
+            "get": {
+                "description": "查询一个分类的详细信息",
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "查询单个分类",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "分类ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {}
+                }
+            }
+        },
+        "/api/class/page/{pi}/{ps}": {
+            "get": {
+                "description": "分类按分页获取",
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "分类按分页获取",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "当前页数",
+                        "name": "pi",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "一页显示多少数据",
+                        "name": "ps",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {}
+                }
+            }
+        }
+    }
+}

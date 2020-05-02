@@ -3,6 +3,7 @@ package router
 import (
 	"../control"
 	"github.com/labstack/echo"
+	echoSwagger "github.com/swaggo/echo-swagger"
 )
 
 var debug = true
@@ -21,5 +22,6 @@ func Run() {
 	AdmRouter(dzero)
 	api := app.Group("/api") //  api 接口组
 	APIRouter(api)
+	app.GET("/swagger/*", echoSwagger.WrapHandler) // 添加swagger
 	app.Start(":801")
 }

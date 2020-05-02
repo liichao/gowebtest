@@ -9,7 +9,7 @@ import (
 	"github.com/zxysilent/utils"
 )
 
-// ArticleAll 查询所有分类
+// ArticleAll 查询所有文章
 func ArticleAll(ctx echo.Context) error {
 	modes, err := model.ArticleAll()
 	if err != nil {
@@ -20,6 +20,13 @@ func ArticleAll(ctx echo.Context) error {
 }
 
 // ArticleGet 查询一条分类
+// @Summary 查询文章信息
+// @Description 调用获取文章信息
+// @Produce  json
+// @Param id path int true "文章ID"
+// @Success 200  {string} string	"ok"
+// @Failure 500
+// @Router /api/article/get/{id} [get]
 func ArticleGet(ctx echo.Context) error {
 	id, err := strconv.ParseInt(ctx.Param("id"), 10, 64)
 	//id, err := strconv.ParseInt("2", 10, 64) // 获取id,按照10进制 转换成int64
@@ -35,7 +42,16 @@ func ArticleGet(ctx echo.Context) error {
 	return ctx.JSON(utils.Succ("data", mod))
 }
 
-// ArticleGetClass 分类分页
+// ArticleGetClass 根据文章分类获取数据
+// @Summary 根据文章分类获取数据
+// @Description 根据文章分类获取数据
+// @Produce  json
+// @Param cid path int true "分类ID"
+// @Param pi path int true "当前页数"
+// @Param ps path int true "一页显示多少数据"
+// @Success 200  {string} string	"ok"
+// @Failure 500
+// @Router /api/article/{cid}/{pi}/{ps} [get]
 func ArticleGetClass(ctx echo.Context) error {
 	// pi 获取分页
 	pi, err := strconv.Atoi(ctx.Param("pi"))
