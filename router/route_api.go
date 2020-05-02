@@ -12,5 +12,7 @@ func APIRouter(api *echo.Group) {
 	api.GET("/class/all", control.ClassAll)
 	api.GET("/class/page", control.ClassPage)
 	api.GET("/class/get/:id", control.ClassGet)
-	api.GET("/article/all", control.ArticleAll)
+	api.GET("/article/all", control.ArticleAll)               // 查询所有文章
+	api.GET("/article/get/:id", control.ArticleGet)           // 查看一篇文章  http://url/api/article/get/文章id
+	api.GET("/article/:cid/:pi/:ps", control.ArticleGetClass) // 查看一篇文章  http://url/api/article/文章分类id/页数/一页显示数量
 }

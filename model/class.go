@@ -14,6 +14,8 @@ type Class struct {
 
 // ClassPage 分页
 func ClassPage(pi, ps int) ([]Class, error) {
+	// pi 第几页
+	// ps 每页几条信息
 	modes := make([]Class, 0, ps)
 	err := Db.Select(&modes, "select * from article_class limit ?,?", (pi-1)*ps, ps)
 	return modes, err

@@ -33,7 +33,7 @@ func ClassAll(ctx echo.Context) error {
 		return ctx.JSON(utils.Fail("未查询到数据", err.Error()))
 	}
 	return ctx.JSON(utils.Succ("分类数据", modes))
-	//return ctx.JSONPretty(http.StatusOK, modes, " ")
+	// return ctx.JSONPretty(http.StatusOK, modes, " ")
 }
 
 // ClassPage 分类分页
