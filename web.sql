@@ -55,3 +55,49 @@ alter table ARTICLE comment '文章';
 
 alter table ARTICLE add constraint FK_Reference_5 foreign key (CLASS_ID)
       references ARTICLE_CLASS (CLASS_ID) on delete restrict on update restrict;
+
+drop table if exists ARTICLE_THUMB;
+
+/*==============================================================*/
+/* Table: ARTICLE_THUMB                                         */
+/*==============================================================*/
+create table ARTICLE_THUMB
+(
+   AT_ID BIGINT(18) not null
+   auto_increment comment '数据ID',
+   ARTICLE_ID           BIGINT
+   (18) comment '文章ID',
+   USER_ID              BIGINT
+   (18) comment '点赞用户ID',
+   OP_DATE_TIME         DATETIME comment '点赞时间',
+   REMARK               VARCHAR
+   (64) comment '备注',
+   primary key
+   (AT_ID)
+);
+
+   alter table ARTICLE_THUMB comment '文章点赞记录';
+
+   drop table if exists ARTICLE_REVIEW;
+
+   /*==============================================================*/
+   /* Table: ARTICLE_REVIEW                                        */
+   /*==============================================================*/
+   create table ARTICLE_REVIEW
+   (
+      AR_ID BIGINT(18) not null
+      auto_increment comment '数据ID',
+   ARTICLE_ID           BIGINT
+      (18) comment '文章ID',
+   USER_ID              BIGINT
+      (18) comment '点赞用户ID',
+   OP_DATE_TIME         DATETIME comment '点赞时间',
+   REVIEW_COMMENT       VARCHAR
+      (255),
+   REMARK               VARCHAR
+      (64) comment '备注',
+   primary key
+      (AR_ID)
+);
+
+      alter table ARTICLE_REVIEW comment '文章评论记录';
